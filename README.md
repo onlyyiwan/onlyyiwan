@@ -33,7 +33,7 @@ doesn't.
 
 ---
 
-### 工程亮点
+### 怎么爬的
 
 - 用 **Celery chord** 把 PDF 按页拆分并行 OCR 再聚合落盘，而不是单纯堆队列
 - RAG 的引用能定位到 **原文 PDF 页码**，不是只给个文件名
@@ -57,7 +57,7 @@ doesn't.
 
 <div align="center">
 
-工作机会、技术交流、合作，都欢迎邮件聊。
+墙还有很多。工作机会、技术交流、合作，邮件聊。
 
 [changwanyi53@gmail.com](mailto:changwanyi53@gmail.com)
 
