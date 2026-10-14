@@ -2,7 +2,7 @@
 
 ### 云梯 Yunti
 
-AI 全栈工程师 · 分布式系统 / LLM 工程化 / RAG & Agent
+AI 全栈工程师 · 一个人跑通大模型从 Demo 到生产的全链路
 
 [changwanyi53@gmail.com](mailto:changwanyi53@gmail.com) · China · Beijing
 
@@ -10,24 +10,24 @@ AI 全栈工程师 · 分布式系统 / LLM 工程化 / RAG & Agent
 
 ---
 
-做过文档智能、RAG 知识库、智能外呼、MCP 生态集成、分布式任务调度这些方向从 POC 到生产的完整交付，
-场景覆盖银行、医疗、水务、能源等强监管行业，技术上覆盖后端（Python / Go）、前端（Vue 3）、
-数据与检索（MySQL / Redis / Elasticsearch / Milvus / Neo4j）全链路。
+十几个大模型生产系统，从 0 到 1 独立交付，覆盖银行、医疗、水务、能源这些最不能对出错宽容的行业。
+前端、后端、数据与检索、模型层——一个人跑通全栈，不是只会调 API 的那种。
 
-更关心的是"模型能力怎么在真实系统里稳定跑起来"：重试与降级、并发控制、状态一致性、可观测性 ——
-这些比模型本身更容易被低估，也更容易在生产里先出问题。
+模型两年一换代，但让模型在生产里扛得住的那套工程能力——重试与降级、并发控制、状态一致性、
+可观测性——不会跟着过时。这才是真正难的部分，也是我更在意的部分。
 
 <details>
 <summary>EN</summary>
 <br>
 
-AI full-stack engineer. I've shipped document intelligence, RAG knowledge bases, outbound-call voice
-agents, MCP ecosystem integrations, and distributed task scheduling systems from POC to production,
-across regulated industries (banking, healthcare, water utilities, energy) — spanning Python/Go
-backends, Vue 3 frontends, and the full data/retrieval stack (MySQL, Redis, Elasticsearch, Milvus, Neo4j).
-What I care about most is making model capability hold up in a real system: retries, degradation,
-concurrency control, state consistency, observability — the parts that are easy to underestimate and
-the first to break in production.
+AI full-stack engineer. I've independently shipped a dozen+ LLM systems from zero to production,
+across industries with little tolerance for error — banking, healthcare, water utilities, energy.
+Frontend, backend, data & retrieval, model layer: one person running the whole stack, not just
+calling an API.
+
+Models get replaced every couple of years. The engineering that keeps a model standing up in
+production — retries, degradation, concurrency control, state consistency, observability — doesn't.
+That's the hard part, and the part I actually care about.
 
 </details>
 
@@ -77,7 +77,7 @@ MySQL 存业务，Elasticsearch 和 Milvus 分管全文与向量检索，MinIO �
 
 <div align="center">
 
-如果你在招 AI 全栈 / 后端工程师，欢迎邮件联系，可以具体聊某个项目的实现细节。
+工作机会、技术交流、合作，都欢迎邮件聊。
 
 [changwanyi53@gmail.com](mailto:changwanyi53@gmail.com)
 
