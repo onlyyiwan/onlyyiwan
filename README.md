@@ -1,6 +1,6 @@
 ### Hi，我是 Yiwan
 
-AI 全栈工程师，常驻北京。
+常驻北京。
 
 邮箱 [changwanyi53@gmail.com](mailto:changwanyi53@gmail.com) ·
 [博客园](https://www.cnblogs.com/changwan) ·
@@ -11,22 +11,22 @@ AI 全栈工程师，常驻北京。
 
 ### 一点看法
 
-Codex、Copilot 把"写代码"的门槛拉到了地板。但同一个工具在不同人手里，产出的系统质量天差地别——
-差的不是会不会用工具，是工程判断力。
+一个 AI 项目里，真正和模型直接相关的代码可能不到两成。剩下八成是：数据怎么进来、结果怎么验、
+失败了怎么兜、权限怎么管、断网了还跑不跑。这八成不写，Demo 永远只是 Demo。
 
-所以我不训模型。我做的是让模型在真实业务里活下来的那一层：重试、权限边界、失败兜底、数据合规。
-模型自己解决不了这些，这一层也不会被它替代。
+Demo 三天能跑通，进生产要三个月——差的从来不是模型能力，是中间这段没人愿意干的脏活。
+我干的就是这段。
 
 <details>
 <summary>EN</summary>
 <br>
 
-Codex and Copilot dropped the floor on "writing code." But the same tool produces wildly different
-systems depending on who's holding it — the gap is engineering judgment, not tool proficiency.
+In an AI project, maybe 20% of the code actually touches the model. The other 80% is: how data gets
+in, how results get verified, what happens when it fails, who's allowed to do what, and whether it
+still runs with the network cable pulled. Skip that 80% and the demo stays a demo.
 
-So I don't train models. I build the layer that keeps them alive in real business use: retries,
-permission boundaries, failure fallbacks, data compliance. The model doesn't solve those for you,
-and it isn't replacing that layer either.
+A demo takes three days; production takes three months. The gap was never model capability — it's
+the unglamorous work in between. That's the part I do.
 
 </details>
 
