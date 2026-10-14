@@ -1,8 +1,6 @@
 <div align="center">
 
-### 云梯 Yunti
-
-AI 全栈工程师 · 一个人跑通大模型从 Demo 到生产的全链路
+AI 全栈工程师
 
 [changwanyi53@gmail.com](mailto:changwanyi53@gmail.com) · China · Beijing
 
@@ -10,21 +8,26 @@ AI 全栈工程师 · 一个人跑通大模型从 Demo 到生产的全链路
 
 ---
 
-独立交付 **十几个** 从 0 到 1 的大模型生产系统，覆盖银行、医疗、水务、能源这些最不能容错的行业——
-前端、后端、数据检索、模型层，一个人跑通全栈。
+别人造梯子是为了够着东西，我造梯子是为了爬进去——银行、医院、水务局，这些你以为进不去的地方。
 
-模型两年一换代，但让它在生产里扛得住的那套工程能力——重试降级、并发控制、状态一致性——不会跟着过时。
+十几个从 0 到 1 的大模型生产系统，没有一个是靠 Demo 糊弄过去的——这些行业但凡出错一次就是大新闻，
+容错率比谁都低。前端、后端、数据检索、模型层，一个人全扛。
+
+模型两年一换代，这套能让模型在生产里站住脚的工程能力，不会跟着过时。
 
 <details>
 <summary>EN</summary>
 <br>
 
-AI full-stack engineer. I've independently shipped a dozen+ LLM systems from zero to production,
-across industries with little tolerance for error — banking, healthcare, water utilities, energy —
-running the whole stack myself: frontend, backend, data & retrieval, model layer.
+Others build ladders to reach things. I build ladders to climb in — banking, hospitals, water
+utilities, the places you'd assume nobody gets into.
 
-Models get replaced every couple of years. The engineering that keeps one standing up in production —
-retries, degradation, concurrency control, state consistency — doesn't.
+A dozen+ LLM systems shipped from zero to production, and none of them got there on a demo's charm —
+these are industries where one mistake makes headlines, zero tolerance for error. Frontend, backend,
+data & retrieval, model layer: one person running the whole stack.
+
+Models get replaced every couple of years. The engineering that keeps one standing up in production
+doesn't.
 
 </details>
 
@@ -69,7 +72,7 @@ retries, degradation, concurrency control, state consistency — doesn't.
 
 ### 项目
 
-- **[repo-name](https://github.com/yunti/repo-name)** <a href="https://github.com/yunti/repo-name"><img src="https://img.shields.io/github/stars/yunti/repo-name?style=social" alt="stars" height="16"></a> — 一句话说明它是什么、解决什么
+- **[repo-name](https://github.com/onlyyiwan/repo-name)** <a href="https://github.com/onlyyiwan/repo-name"><img src="https://img.shields.io/github/stars/onlyyiwan/repo-name?style=social" alt="stars" height="16"></a> — 一句话说明它是什么、解决什么
 -->
 
 <!--
