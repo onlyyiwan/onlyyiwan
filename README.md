@@ -1,47 +1,15 @@
-<div align="center">
+### Hi，我是 Yiwan
 
-### AI 全栈工程师
+AI 全栈工程师，常驻北京。
 
-十几个大模型生产系统 · 从 0 到 1 独立交付 · 银行 / 医疗 / 水务 / 能源
-
-[changwanyi53@gmail.com](mailto:changwanyi53@gmail.com) · China · Beijing
-
-</div>
-
----
-
-### 做过什么
-
-**智能外呼** — 电话机器人与大模型对话编排，适配不同供应商协议差异，处理用户打断（barge-in）边界情况，多租户隔离部署
-
-**智能文档** — PaddleOCR 版面结构识别 + 视觉模型理解嵌入图像，Celery chord 按页并行再聚合，检索结果定位到原文页码
-
-**RAG 知识库** — 向量检索 + 混合召回 + 语义重排，答案有依据可追溯
-
-**MCP 能力扩展** — 给大模型接外部工具与知识图谱，基于 Neo4j 向量索引做长期记忆服务
-
-**中台底座** — OAuth2 + JWT + RBAC 三级权限，Redis 分布式锁做多实例任务选主与故障转移，Redis Streams 异步审计日志管道
+邮箱 [changwanyi53@gmail.com](mailto:changwanyi53@gmail.com) ·
+[博客园](https://www.cnblogs.com/changwan) ·
+[掘金](https://juejin.cn/user/2663443925044906) ·
+[CSDN](https://blog.csdn.net/m0_73848096)
 
 ---
 
-### 用什么做的
-
-<div align="center">
-<img src="https://skillicons.dev/icons?i=python,go,ts,fastapi,vue,redis,mysql,postgres,elasticsearch,docker,nginx,linux" alt="tech stack" />
-</div>
-
-| | |
-| :-- | :-- |
-| **语言** | Python · Go · TypeScript · Shell |
-| **后端** | FastAPI 全异步 · SQLAlchemy 2.0 Async · Alembic · Celery · APScheduler · Gin |
-| **前端** | Vue 3 · Vite · Pinia · Element Plus |
-| **数据** | MySQL / PostgreSQL · Redis · Elasticsearch 全文 · Milvus 向量 · Neo4j 图谱 · MinIO 对象 |
-| **模型** | DeepSeek / Qwen / GPT 统一编排（容灾 + 限流）· PaddleOCR PPStructureV3 |
-| **交付** | Docker Compose · Nginx · GitHub Actions — 客户现场多为离线内网，整套要能断网独立跑 |
-
----
-
-### 怎么看这行
+### 一点看法
 
 Codex、Copilot 把"写代码"的门槛拉到了地板。但同一个工具在不同人手里，产出的系统质量天差地别——
 差的不是会不会用工具，是工程判断力。
@@ -64,13 +32,48 @@ and it isn't replacing that layer either.
 
 ---
 
+### 技术栈
+
 <div align="center">
-
-工作机会、技术交流、合作，都欢迎邮件聊。
-
-[changwanyi53@gmail.com](mailto:changwanyi53@gmail.com)
-
+<img src="https://skillicons.dev/icons?i=python,go,ts,fastapi,vue,redis,mysql,postgres,elasticsearch,docker,nginx,linux" alt="tech stack" />
 </div>
+
+| | |
+| :-- | :-- |
+| **语言** | Python · Go · TypeScript · Shell |
+| **后端** | FastAPI 全异步 · SQLAlchemy 2.0 Async · Alembic · Celery · APScheduler · Gin |
+| **前端** | Vue 3 · Vite · Pinia · Element Plus |
+| **数据** | MySQL / PostgreSQL · Redis · Elasticsearch 全文 · Milvus 向量 · Neo4j 图谱 · MinIO 对象 |
+| **模型** | DeepSeek / Qwen / GPT 统一编排（容灾 + 限流）· PaddleOCR PPStructureV3 |
+| **交付** | Docker Compose · Nginx · GitHub Actions — 客户现场多为离线内网，整套要能断网独立跑 |
+
+---
+
+### 主要做什么
+
+**智能外呼**
+
+电话机器人与大模型对话编排，适配不同供应商的协议差异（SSE 累积式 / OpenAI 兼容增量式），
+处理用户打断（barge-in）的上下文标记与流式输出中控制 token 被截断的边界情况，多租户隔离部署。
+
+**智能文档**
+
+PaddleOCR PPStructureV3 做版面结构识别，配合视觉模型理解嵌入图像；Celery chord 按页拆分并行
+处理再聚合落盘；Redis Stream 推送实时进度，断线靠 last_id 续传。检索结果能定位到原文页码。
+
+**RAG 知识库**
+
+Milvus 向量检索 + 混合召回 + 语义重排，服务企业内部知识问答。答案有依据可追溯，不是模型瞎编。
+
+**MCP 能力扩展**
+
+给大模型接外部工具与知识图谱，基于 Neo4j 原生向量索引做长期记忆服务；多厂商 LLM 响应归一化层，
+处理 finish_reason 映射、tool_calls 序列化、content blocks 展平这类兼容性问题。
+
+**中台底座**
+
+OAuth2 + JWT + RBAC 三级权限（菜单 / 按钮 / 数据范围）；Redis 分布式锁做多实例定时任务选主与
+故障自动转移；Redis Streams 消费组构建带去重和悬挂消息认领的异步审计日志管道。
 
 <!--
   ═══════════════════════════════════════════════════════════════
