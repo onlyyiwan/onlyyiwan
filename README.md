@@ -1,90 +1,71 @@
+<div align="center">
+
 ### 云梯 Yunti
 
-企业 AI 落地 ｜ FDE ｜ 创业
+AI 全栈工程师 · 分布式系统 / LLM 工程化 / RAG & Agent
 
-[![Email](https://img.shields.io/badge/changwanyi53%40gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:changwanyi53@gmail.com)
-[![WeChat](https://img.shields.io/badge/VX-%E5%BE%85%E5%A1%AB%E5%86%99-07C160?style=flat-square&logo=wechat&logoColor=white)](#)
-![China-Beijing](https://img.shields.io/badge/China--Beijing-000000?style=flat-square&logo=googlemaps&logoColor=white)
+[changwanyi53@gmail.com](mailto:changwanyi53@gmail.com) · China · Beijing
 
-帮企业把大模型从 Demo 送进生产。不训模型，做的是让模型活下来的那一层。
-
-落地过银行、医疗、水务、能源、金融，累计数十个项目。行业不同，卡点常常一样：
-Demo 三天能跑通，进生产要三个月 —— 中间隔着数据管道、结果校验、失败重试，
-以及一台连不上外网的机器怎么部署。
-
-我的位置在业务方和工程之间：听得懂业务要什么，也能把它拆成能上线、能维护的系统。
-
-> **EN** ｜ I help enterprises put LLMs into production — banking, healthcare, water utilities, energy,
-> and finance, across dozens of projects. A demo takes three days; production takes three months.
-> What's missing is data plumbing, verifiable output, failure recovery, and deployment onto networks
-> without internet access. I don't train models; I build the layer that keeps them alive.
+</div>
 
 ---
 
-### 能力方向
+做过文档智能、RAG 知识库、智能外呼、MCP 生态集成、分布式任务调度这些方向从 POC 到生产的完整交付，
+场景覆盖银行、医疗、水务、能源等强监管行业，技术上覆盖后端（Python / Go）、前端（Vue 3）、
+数据与检索（MySQL / Redis / Elasticsearch / Milvus / Neo4j）全链路。
 
-| | |
-| :--- | :--- |
-| **多模态文档解析** | PaddleOCR PPStructureV3 版面结构解析 + 多模态模型理解嵌入图像；Celery 任务链与 chord 并发聚合，Redis Stream 推 WebSocket 回传实时进度 |
-| **RAG 与知识库** | Milvus 向量检索 + 混合召回 + 语义重排，服务知识问答与文档检索场景 |
-| **智能外呼与语音交互** | 电话机器人与大模型对话编排，与既有业务系统打通 |
-| **模型接入层** | DeepSeek / Qwen / GPT 多模型统一编排，含重试、随机回退与限流 |
-| **系统集成** | MCP 能力扩展与一键部署，把模型能力接进既有系统 |
-| **中后台底座** | OAuth2 + JWT + RBAC 三级权限（菜单 / 按钮 / 数据范围）；四层架构 controller → service → dao → entity |
-| **浏览器自动化** | CDP 驱动真实 Chrome，处理重 SPA、登录态复用、需人工监督的场景 |
+更关心的是"模型能力怎么在真实系统里稳定跑起来"：重试与降级、并发控制、状态一致性、可观测性 ——
+这些比模型本身更容易被低估，也更容易在生产里先出问题。
+
+<details>
+<summary>EN</summary>
+<br>
+
+AI full-stack engineer. I've shipped document intelligence, RAG knowledge bases, outbound-call voice
+agents, MCP ecosystem integrations, and distributed task scheduling systems from POC to production,
+across regulated industries (banking, healthcare, water utilities, energy) — spanning Python/Go
+backends, Vue 3 frontends, and the full data/retrieval stack (MySQL, Redis, Elasticsearch, Milvus, Neo4j).
+What I care about most is making model capability hold up in a real system: retries, degradation,
+concurrency control, state consistency, observability — the parts that are easy to underestimate and
+the first to break in production.
+
+</details>
+
+---
+
+### 工程实践
+
+**文档智能与分布式任务编排**
+- 用 Celery chord 实现 PDF 按页拆分并行 OCR 后聚合落盘的"动态裂变-聚合"任务编排
+- 模型调用失败时在候选模型池中随机回退重试，做基础的多模型容灾降级
+- Redis Stream（xadd / xread）做进度推送通道，断线靠 last_id 续传不丢进度
+
+**RAG 与大模型应用工程**
+- Milvus IVF_FLAT + COSINE 向量检索，答案引用能定位到原文 PDF 页码（按页切片生成可点击链接，而不只是给文件名）
+- 用 Redis Lua 脚本实现会话级分布式锁 + 全局并发租约 + IP 限流的三层流控，支撑流式对话稳定性
+- 客户端断连时把已生成的内容标记为 interrupted 并持久化，而不是直接丢弃
+
+**智能外呼与实时语音交互**
+- 用统一值对象适配两种外呼供应商协议（SSE 累积式 / OpenAI 兼容增量式），隔离协议语义差异
+- 处理用户打断（barge-in）的上下文标记，以及流式输出中特殊控制 token 被截断的边界情况
+- 多租户场景下的三层隔离：上下文注入 org_id、Service 签名强制携带、ORM 层自动追加租户条件
+- 用"话术编译器"把可视化对话树渲染成缩进文本，让模型自己产出最终 system / user prompt，而不是直接拼模板
+
+**MCP 生态与模型网关**
+- 基于 Neo4j 原生向量索引做 MCP 知识图谱记忆服务（SSE transport + ContextVar 多租户鉴权）
+- 手写多厂商 LLM 响应归一化层：finish_reason 映射、tool_calls 序列化、content blocks 展平、usage 字段补全、JSON Schema 清理，覆盖流式与非流式两条路径
+- 从 Streamable HTTP + 统一网关迁移到更简单的 SSE 单一职责服务，踩过 Starlette 中间件在子应用挂载场景下的坑
+
+**中后台基础设施**
+- Redis 分布式锁实现多 worker 部署下的定时任务选主与故障自动转移
+- Redis Streams 消费组构建带去重和悬挂消息认领的异步审计日志管道
+- 自实现兼容 Quartz 语法（L / W / #）的 Cron 解析器
 
 ---
 
 ### 技术栈
 
-**语言**
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Shell](https://img.shields.io/badge/Shell-4EAA25?style=flat-square&logo=gnubash&logoColor=white)
-
-**后端**
-
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
-![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy_2.0_Async-D71F00?style=flat-square&logo=sqlalchemy&logoColor=white)
-![Alembic](https://img.shields.io/badge/Alembic-6BA81E?style=flat-square&logo=alembic&logoColor=white)
-![Celery](https://img.shields.io/badge/Celery-37814A?style=flat-square&logo=celery&logoColor=white)
-![APScheduler](https://img.shields.io/badge/APScheduler-2E7D32?style=flat-square)
-![Gin](https://img.shields.io/badge/Gin-00ADD8?style=flat-square&logo=gin&logoColor=white)
-
-**前端**
-
-![Vue 3](https://img.shields.io/badge/Vue_3-4FC08D?style=flat-square&logo=vuedotjs&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
-![Pinia](https://img.shields.io/badge/Pinia-FFD859?style=flat-square&logo=pinia&logoColor=black)
-![Element Plus](https://img.shields.io/badge/Element_Plus-409EFF?style=flat-square&logo=element&logoColor=white)
-
-**数据与检索**
-
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)
-![Elasticsearch](https://img.shields.io/badge/Elasticsearch-005571?style=flat-square&logo=elasticsearch&logoColor=white)
-![Milvus](https://img.shields.io/badge/Milvus-00A1EA?style=flat-square)
-![MinIO](https://img.shields.io/badge/MinIO%2FS3-C72E49?style=flat-square&logo=minio&logoColor=white)
-
-**模型与文档**
-
-![DeepSeek](https://img.shields.io/badge/DeepSeek-4D6BFE?style=flat-square)
-![Qwen](https://img.shields.io/badge/Qwen-615CED?style=flat-square)
-![GPT](https://img.shields.io/badge/GPT-412991?style=flat-square&logo=openai&logoColor=white)
-![PaddleOCR](https://img.shields.io/badge/PaddleOCR_PPStructureV3-0EA5E9?style=flat-square)
-![RAG](https://img.shields.io/badge/RAG-%E6%B7%B7%E5%90%88%E6%A3%80%E7%B4%A2-6E56CF?style=flat-square)
-![MCP](https://img.shields.io/badge/MCP-1F1F1F?style=flat-square)
-
-**交付与运维**
-
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
-![CDP](https://img.shields.io/badge/Chrome_DevTools_Protocol-4285F4?style=flat-square&logo=googlechrome&logoColor=white)
+语言用 Python、Go、TypeScript、Shell；后端 FastAPI + SQLAlchemy 2.0 Async + Alembic + Celery，调度配 APScheduler，偶尔上 Gin；前端 Vue 3 + Vite + Pinia + Element Plus。数据与检索层是 MySQL / PostgreSQL 存业务，Redis 做缓存与消息，Elasticsearch 和 Milvus 分管全文与向量检索，Neo4j 做知识图谱，MinIO 收文件。模型侧接 DeepSeek / Qwen / GPT，文档解析靠 PaddleOCR PPStructureV3，检索走 RAG 混合召回，系统集成靠 MCP。交付用 Docker + Nginx + GitHub Actions，以 Linux 为主，还有 CDP 驱动的浏览器自动化。
 
 它们不是清单，实际项目里通常这样组合：FastAPI 出业务 API，SQLAlchemy 全异步读写，
 Celery 跑文档解析这类长任务；Vue 3 + Element Plus 出中后台；
@@ -94,21 +75,11 @@ MySQL 存业务，Elasticsearch 和 Milvus 分管全文与向量检索，MinIO �
 
 ---
 
-### 落地场景
-
-银行 · 医疗 · 水务 · 能源 · 金融
-
-从 POC 验证到生产上线，包含内网离线环境的部署与运维。客户名称受合同约束，此处不具名。
-
----
-
 <div align="center">
 
-**如果你正在考虑把 AI 用进业务里，欢迎聊聊。**
+如果你在招 AI 全栈 / 后端工程师，欢迎邮件联系，可以具体聊某个项目的实现细节。
 
-<a href="mailto:changwanyi53@gmail.com"><img src="https://img.shields.io/badge/%E5%90%88%E4%BD%9C-%E5%8F%91%E9%82%AE%E4%BB%B6-2ea44f?style=flat-square" alt="合作"></a>
-
-<sub>只做合法合规的企业场景。</sub>
+[changwanyi53@gmail.com](mailto:changwanyi53@gmail.com)
 
 </div>
 
